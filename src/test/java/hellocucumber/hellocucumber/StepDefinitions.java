@@ -23,7 +23,7 @@ public class StepDefinitions {
 	@Given("^Open Chrome and navigate to a site$")
 	public void open_chrome_and_navigate_to_site() throws Throwable {
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\dilan\\OneDrive\\Desktop\\SDET Classwork\\chromedriver_win32\\chromedriver.exe");
+				"C:chromedriver.exe"); //Edit path to chromedriver.exe here
 		driver = new ChromeDriver();
 		driver.get("http://www.thecranberryeagle.com/");
 
@@ -31,7 +31,7 @@ public class StepDefinitions {
 	}
 
 	@When("^Enter the email address and first name$")
-	public void enter_the_Email_and_First_Name() throws Throwable {
+	public void scrollDownPage() throws Throwable {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		js.executeScript("window.scrollTo(0,1200);");
@@ -40,29 +40,12 @@ public class StepDefinitions {
 	}
 
 	@Then("^Scrolls down the page and clicks on the link at the bottom$")
-	public void Scroll_Down_The_Page(io.cucumber.datatable.DataTable dt) throws Throwable {
+	public void userActionsHere() throws Throwable {
 		
-		List<Map<String, String>> userList = dt.asMaps(String.class, String.class);
+		System.out.println("This step does actions.");
 		
-		for (int i = 0; i < 4; i++) 
-		{
-			driver.manage().deleteAllCookies();
-			WebElement fName = driver.findElement(By.id("mce-FNAME"));
-			fName.clear();
-			fName.sendKeys(userList.get(i).get("fName"));
-			
-			WebElement lName = driver.findElement(By.id("mce-LNAME"));
-			lName.sendKeys(userList.get(i).get("lName"));
-			
-			WebElement uEmail = driver.findElement(By.id("mce-EMAIL"));
-			uEmail.sendKeys(userList.get(i).get("userEmail"));
-
-			driver.findElement(By.id("mc-embedded-subscribe")).click();
-			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		}
-		System.out.println("This step enters the Email and First Name fields on the homepage.");
-
-		driver.close();
+		//driver.close(); 
+		//Above line commented out to show finial actions of test, uncomment to close testing window automatically.
 	}
 
 }
