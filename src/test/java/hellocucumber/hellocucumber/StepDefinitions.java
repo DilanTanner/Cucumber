@@ -18,7 +18,7 @@ public class StepDefinitions {
 	@Given("^Open Chrome and navigate to a site$")
 	public void open_chrome_and_navigate_to_site() throws Throwable {
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\dilan\\OneDrive\\Desktop\\SDET Classwork\\chromedriver_win32\\chromedriver.exe");
+				"C:chromedriver.exe"); //Edit path to chromedriver.exe here
 		driver = new ChromeDriver();
 		driver.get("http://www.thecranberryeagle.com/");
 
@@ -35,14 +35,7 @@ public class StepDefinitions {
 
 	@Then("^Scrolls down the page and clicks on the link at the bottom$")
 	public void Scroll_Down_The_Page() throws Throwable {
-		WebElement fName = driver.findElement(By.id("mce-FNAME"));
-		fName.sendKeys("Janie");
-		WebElement lName = driver.findElement(By.id("mce-LNAME"));
-		lName.sendKeys("Does");
-		WebElement uEmail = driver.findElement(By.id("mce-EMAIL"));
-		uEmail.sendKeys("tempStuff@tests.com");
 		
-		driver.findElement(By.id("mc-embedded-subscribe")).click();
 		System.out.println("This step enters the Email and First Name fields on the homepage.");
 		
 		driver.close();
