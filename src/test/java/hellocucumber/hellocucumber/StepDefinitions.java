@@ -26,7 +26,7 @@ public class StepDefinitions {
 	}
 
 	@When("^Enter the email address and first name$")
-	public void enter_the_Email_and_First_Name() throws Throwable {
+	public void scrollDownPage() throws Throwable {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		js.executeScript("window.scrollTo(0,1500);");
@@ -34,11 +34,12 @@ public class StepDefinitions {
 	}
 
 	@Then("^Scrolls down the page and clicks on the link at the bottom$")
-	public void Scroll_Down_The_Page() throws Throwable {
+	public void userActionsHere() throws Throwable {
 		
-		System.out.println("This step enters the Email and First Name fields on the homepage.");
+		System.out.println("This step does actions.");
 		
-		driver.close();
+		//driver.close(); 
+		//Above line commented out to show finial actions of test, uncomment to close testing window automatically.
 	}
 
 }
